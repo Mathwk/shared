@@ -4,11 +4,11 @@
  *
  * Return: Success 0
  */
-int main()
+int main(void)
 {
-	char *command_in;
-	size_t n = 0;
-	int getl_out;
+	char **argv, *command_in;
+	int argc, getl_out, i = 0;
+	size_t n;
 
 	while (1)
 	{
@@ -19,9 +19,16 @@ int main()
 		printf("\n\n[Disconnected...]\n");
 		return (-1);
 	}
-	printf("%s", command_in);
-
-	free(command_in);
+	for (argc = 1; command_in[i + 1] != '\0'; i++)
+	{
+		if (command_in[i] != ' ' && command_in[i - 1] == ' ')
+			argc++;
 	}
+	argv = malloc(sizeof(char) * argc);
+	argv = string_split(command_in, ' ', argc);
+	excute_in(argv);
+	free_2d_ar(argv, argc);
+	}
+	free(command_in);
 	return (0);
 }
