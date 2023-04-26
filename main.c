@@ -27,8 +27,8 @@ int main(void)
 	argv = malloc(sizeof(char) * argc);
 	argv = string_split(command_in, ' ', argc);
 	excute_in(argv);
-	free_2d_ar(argv, argc);
 	}
+	free_2d_ar(argv, argc);
 	free(command_in);
 	return (0);
 }
