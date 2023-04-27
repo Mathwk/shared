@@ -8,12 +8,10 @@
  */
 void free_2d_ar(char **argv, int height)
 {
-	int h = height;
+	int i;
 
-	if (argv != NULL)
-	{
-		for (; h >= 0; h--)
-			free(argv[h]);
-	}
+		for (i = 0; i < height; i++)
+			free(argv[i]);
+	
 	free(argv);
 }
