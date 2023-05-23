@@ -8,6 +8,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 
 void excute_in(char **argv);
 char **string_split(char *str, char del, int length);

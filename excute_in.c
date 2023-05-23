@@ -7,10 +7,21 @@
  */
 void excute_in(char **argv)
 {
+	int i;
 
-	if (argv != NULL)
+	i = fork();
+	if (i == -1)
+		perror("(incorrect input) ");
+	if (i == 0)
 	{
-		if (execve(full_path(argv[0]), argv, NULL) == -1)
-			perror("(incorrect input) ");
+		if (argv != NULL)
+		{
+			if (execve(full_path(argv[0]), argv, NULL) == -1)
+				exit(1);
+		}
+	}
+	else
+	{
+		wait(&i);
 	}
 }
